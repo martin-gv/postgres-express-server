@@ -1,0 +1,36 @@
+{
+  "name": "postgres-express-server",
+  "version": "1.0.0",
+  "description": "Postgres + Express server template",
+  "repository": "github:martin-gv/postgres-express-server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon --require dotenv/config --inspect app.js",
+    "lint-staged": "lint-staged"
+  },
+  "author": "Martin Guardado <martinguardado@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.5",
+    "body-parser": "^1.18.3",
+    "chalk": "^3.0.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^7.12.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.1.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "lint-staged": "^9.4.2",
+    "prettier": "1.19.1"
+  },
+  "lint-staged": {
+    "*.{js,json,md}": "prettier --check",
+    "*.js": "eslint"
+  }
+}
