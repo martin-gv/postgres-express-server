@@ -22,10 +22,13 @@ module.exports = function createModel(initConfig) {
 
   const methodConfig = { table, config, formatter };
 
-  const configuredMethods = Object.keys(methods).reduce((acc, key) => {
-    acc[key] = methods[key](methodConfig);
-    return acc;
-  }, {});
+  const configuredMethods = {};
+  const keys = Object.keys(methods);
+
+  // eslint-disable-next-line
+  for (const key of keys) {
+    configuredMethods[key] = methods[key](methodConfig);
+  }
 
   return configuredMethods;
 };

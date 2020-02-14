@@ -4,11 +4,14 @@ const signature = require('../../util/signature');
 const methods = require('./methods');
 
 function createHandler(model) {
-  const httpMethods = Object.keys(methods.http).reduce((acc, key) => {
+  const httpMethods = {};
+  const keys = Object.keys(methods.http);
+
+  // eslint-disable-next-line
+  for (const key of keys) {
     const configured = methods.http[key]({ model });
-    acc[key] = tryCatch(configured);
-    return acc;
-  }, {});
+    httpMethods[key] = tryCatch(configured);
+  }
 
   const findBy = methods.findBy({ model });
 

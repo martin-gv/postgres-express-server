@@ -22,10 +22,13 @@ module.exports = function createSQLFormatter(config) {
   /* Type checking is required for these methods because they accept external input, and because
      they have unexpected results with wrong types (e.g. a number resuts in a default insert) */
 
-  const withSignature = Object.keys(methods).reduce((acc, key) => {
-    acc[key] = signature(['object'], methods[key]);
-    return acc;
-  }, {});
+  const withSignature = {};
+  const keys = Object.keys(methods);
+
+  // eslint-disable-next-line
+  for (const key of keys) {
+    withSignature[key] = signature(['object'], methods[key]);
+  }
 
   return withSignature;
 };
