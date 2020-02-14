@@ -20,6 +20,6 @@ const deleteTag = async (req, res) => {
   res.status(204).end();
 };
 
-const customMethods = wrap({ addTag, deleteTag, martin: 'hey' }, tryCatch);
+const customMethods = wrap({ addTag, deleteTag }, tryCatch);
 
 module.exports = { ...notesHandler, ...customMethods };
