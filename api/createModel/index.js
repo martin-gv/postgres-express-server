@@ -1,14 +1,10 @@
 const methods = require('./methods');
+const defaultConfig = require('./defaultConfig');
 const { createSQLFormatter, identifier } = require('./formatter');
 const isType = require('../../util/isType');
 
 // Model methods return a promise via db.query(). The methods themselves don't need to be
 // async unless they use a query's results before returning them to the handler.
-
-const defaultConfig = {
-  defaultLimit: 10,
-  defaultOffset: 0,
-};
 
 module.exports = function createModel(initConfig) {
   const { collection } = initConfig;
