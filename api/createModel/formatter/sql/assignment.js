@@ -11,7 +11,7 @@ function formatSQL(data) {
     return `${column} = ${placeholder}`;
   });
 
-  return assignments.join();
+  return assignments.join(', ');
 }
 
 // Returns values for SET assignments
