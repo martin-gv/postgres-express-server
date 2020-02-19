@@ -5,7 +5,7 @@
   "repository": "github:martin-gv/postgres-express-server",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
     "start": "node app.js",
     "dev": "nodemon --require dotenv/config --inspect app.js",
     "lint-staged": "lint-staged"
@@ -27,6 +27,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-import": "^2.18.2",
+    "jest": "^25.1.0",
     "lint-staged": "^10.0.7",
     "prettier": "1.19.1"
   },
