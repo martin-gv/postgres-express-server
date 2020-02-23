@@ -1,8 +1,7 @@
-const db = require('../../../db');
 const { hasOperator } = require('../formatter');
 const isEmpty = require('../../../util/isEmpty');
 
-const $delete = ({ table, config, formatter }) => (query) => {
+const $delete = ({ table, config, formatter, db }) => (query) => {
   if (isEmpty(query) && !config.DANGER_deleteAll)
     throw Error(`full table delete in ${config.collection} is not permitted`);
 

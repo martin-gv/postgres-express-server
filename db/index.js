@@ -1,22 +1,42 @@
 const { Pool } = require('pg');
 const { setupEventLoggers, logCurrentConnections } = require('./logger');
 
-// pg uses these environment variables by default:
-// PGHOST, PGUSER, PGDATABASE, PGPASSWORD, and PGPORT
+const createPool = (config) => {
+  if (config) {
+    // A config is optional. If used it should contain these settings:
+    if (
+      !config.user ||
+      !config.host ||
+      !config.database ||
+      !config.password ||
+      !config.port
+    ) {
+      throw Error('missing properties in createPool config');
+    }
+  }
 
-const pool = new Pool({ max: 20 /* default is 10 */ });
-setupEventLoggers(pool);
+  // The default config uses the pg default env variables:
+  // PGHOST, PGUSER, PGDATABASE, PGPASSWORD, and PGPORT
+  const defaultConfig = { max: 20 };
 
-async function query(text, values) {
-  logCurrentConnections(pool);
-  const results = await pool.query(text, values);
-  if (results.command === 'DELETE') return results.rowCount;
-  return results.rows;
-}
+  const pool = new Pool(config || defaultConfig);
 
-// Default query method from pg
-function pgQuery(text, values) {
-  return pool.query(text, values);
-}
+  setupEventLoggers(pool);
 
-module.exports = { query, pgQuery };
+  // Recommended method
+  const query = async (text, values) => {
+    logCurrentConnections(pool);
+    const results = await pool.query(text, values);
+    if (results.command === 'DELETE') return results.rowCount;
+    return results.rows;
+  };
+
+  // Unmodified query from pg package
+  const pgQuery = (text, values) => {
+    return pool.query(text, values);
+  };
+
+  return { query, pgQuery };
+};
+
+module.exports = createPool;

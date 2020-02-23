@@ -1,7 +1,6 @@
-const db = require('../../../db');
 const { params } = require('../formatter/');
 
-const find = ({ table, formatter }) => (query) => {
+const find = ({ table, formatter, db }) => (query) => {
   const [where, values] = formatter.whereSQL(query);
   const join = formatter.joinSQL(query);
   const sort = formatter.sortSQL(query);

@@ -1,8 +1,7 @@
-const db = require('../../../db');
 const { hasOperator, params } = require('../formatter');
 const isEmpty = require('../../../util/isEmpty');
 
-const update = ({ table, config, formatter }) => (query, data) => {
+const update = ({ table, config, formatter, db }) => (query, data) => {
   if (isEmpty(query) && !config.DANGER_updateAll)
     throw Error(`full table update in ${config.collection} is not permitted`);
 
