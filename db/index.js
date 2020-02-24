@@ -1,7 +1,10 @@
 const { Pool } = require('pg');
 const { setupEventLoggers, logCurrentConnections } = require('./logger');
 
-const createPool = (config) => {
+const createPool = (config, options = {}) => {
+  // Set up default values for pool options
+  const logger = options.logger === undefined ? true : options.logger;
+
   if (config) {
     // A config is optional. If used it should contain these settings:
     if (
@@ -21,11 +24,15 @@ const createPool = (config) => {
 
   const pool = new Pool(config || defaultConfig);
 
-  setupEventLoggers(pool);
+  if (logger === true) {
+    setupEventLoggers(pool);
+  }
 
   // Recommended method
   const query = async (text, values) => {
-    logCurrentConnections(pool);
+    if (logger === true) {
+      logCurrentConnections(pool);
+    }
     const results = await pool.query(text, values);
     if (results.command === 'DELETE') return results.rowCount;
     return results.rows;
