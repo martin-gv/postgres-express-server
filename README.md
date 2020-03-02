@@ -53,22 +53,6 @@ app.get('/notes/:id', notesHandler.get);
 
 Sample files are included for a "notes app" with user accounts, notes, and tags. These files are found in the `handlers`, `models`, and `routes` folders.
 
-## Environment Variables
-
-#### JWT Tokens:
-
-- JWT_SECRET_KEY: secret key for authenticating tokens
-- JWT_ACCESS_EXPIRY: string describing a time span
-- JWT_REFRESH_EXPIRY: string describing a time span
-
-#### Postgres:
-
-- PGHOST
-- PGUSER
-- PGDATABASE
-- PGPASSWORD
-- PGPORT
-
 ## Methods Summary
 
 ```
