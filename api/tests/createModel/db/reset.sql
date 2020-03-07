@@ -1,2 +1,2 @@
-drop table if exists test_table;
+drop table if exists employee, client_account;
 
