@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const createModel = require('../../createModel');
-const createPool = require('../../../db/');
+const createPool = require('../../db/');
 
 // Connect to testing database
 const db = createPool(

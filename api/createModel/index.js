@@ -3,7 +3,7 @@ const defaultConfig = require('./defaultConfig');
 const { createSQLFormatter, identifier } = require('./formatter');
 const isType = require('../../util/isType');
 
-const createPool = require('../../db');
+const createPool = require('../db');
 
 let defaultPool;
 
