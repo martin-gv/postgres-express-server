@@ -1,4 +1,5 @@
-const { setupDatabase, resetDatabase, Model } = require('../db/dbTest');
+const { setupDatabase, resetDatabase, Model, db } = require('../db/dbTest');
+const { createModel } = require('../../../index');
 
 beforeEach(() => setupDatabase());
 afterEach(() => resetDatabase());
@@ -143,5 +144,41 @@ describe('createModel methods -> Model.update', () => {
     expect(res[0].id).toBe(5);
     expect(res[0].first_name).toBe('Marjolaine');
     expect(res[0].last_name).toBe('Sporer');
+  });
+
+  test('should update all records', async () => {
+    const CustomModel = createModel({
+      collection: 'employee',
+      DANGER_updateAll: true,
+      db,
+    });
+
+    const res = await CustomModel.update({}, { job_title: 'CEO' });
+    expect(res.length).toBe(10);
+
+    // updated field
+    expect(res.every((el) => el.job_title === 'CEO')).toBe(true);
+
+    // non-updated fields (id, name, tsv)
+    expect(res.every((el) => el.tsv === "'ceo':1")).toBe(true);
+
+    const idAndNames = [
+      { id: 1, name: 'Aileen Witting' },
+      { id: 2, name: 'Grayce Tillman' },
+      { id: 3, name: 'Gisselle Lueilwitz' },
+      { id: 4, name: 'Lenora Sipes' },
+      { id: 5, name: 'Marjolaine Sporer' },
+      { id: 6, name: 'Tremayne Kilback' },
+      { id: 7, name: 'Lula Rau' },
+      { id: 8, name: 'Aileen Shields' },
+      { id: 9, name: 'Israel Sporer' },
+      { id: 10, name: 'Lawson Jaskolski' },
+    ];
+
+    expect(
+      res.map((el) => {
+        return { id: el.id, name: `${el.first_name} ${el.last_name}` };
+      }),
+    ).toEqual(idAndNames);
   });
 });

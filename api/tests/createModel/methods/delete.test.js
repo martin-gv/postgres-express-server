@@ -1,4 +1,5 @@
-const { setupDatabase, resetDatabase, Model } = require('../db/dbTest');
+const { setupDatabase, resetDatabase, Model, db } = require('../db/dbTest');
+const { createModel } = require('../../../index');
 
 beforeEach(() => setupDatabase());
 afterEach(() => resetDatabase());
@@ -64,5 +65,20 @@ describe('createModel methods -> Model.delete', () => {
     expect(res.length).toBe(9);
     const recordStillExists = res.some((row) => row.id === 2);
     expect(recordStillExists).toBe(false);
+  });
+
+  test('should delete all records', async () => {
+    const CustomModel = createModel({
+      collection: 'employee',
+      DANGER_deleteAll: true,
+      db,
+    });
+
+    const deleteRes = await CustomModel.delete({});
+    expect(deleteRes).toBe(10);
+
+    // query table to confirm results
+    const findRes = await Model.find({});
+    expect(findRes).toEqual([]);
   });
 });
