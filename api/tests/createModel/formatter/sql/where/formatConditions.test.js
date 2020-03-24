@@ -1,4 +1,4 @@
-const formatConditions = require('../../where/formatConditions');
+const formatConditions = require('../../../../../createModel/formatter/sql/where/formatConditions');
 
 const mainTable = '"books"';
 

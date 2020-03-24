@@ -1,4 +1,4 @@
-const identifier = require('../identifier');
+const identifier = require('../../../createModel/formatter/identifier');
 
 describe('sql identifier escape function', () => {
   test('it should wrap input in double quotation marks', () => {

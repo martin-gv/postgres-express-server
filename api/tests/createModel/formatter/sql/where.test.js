@@ -1,4 +1,4 @@
-let where = require('../where');
+let where = require('../../../../createModel/formatter/sql/where');
 
 const config = { collection: 'books' };
 where = where(config);

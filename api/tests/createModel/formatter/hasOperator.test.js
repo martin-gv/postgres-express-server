@@ -1,4 +1,4 @@
-const hasOperator = require('../hasOperator');
+const hasOperator = require('../../../createModel/formatter/hasOperator');
 
 describe('checks for object keys that start with $', () => {
   test('should return true if one or more keys start with $', () => {

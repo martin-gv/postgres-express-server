@@ -1,5 +1,5 @@
-const sort = require('../sort');
-const defaultConfig = require('../../../defaultConfig');
+const sort = require('../../../../createModel/formatter/sql/sort');
+const defaultConfig = require('../../../../createModel/defaultConfig');
 
 const config = { ...defaultConfig, collection: 'books' };
 const sortSQL = sort(config);

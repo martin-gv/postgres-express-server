@@ -1,4 +1,4 @@
-const formatSQL = require('../../where/formatSQL');
+const formatSQL = require('../../../../../createModel/formatter/sql/where/formatSQL');
 
 const config = { collection: 'books' };
 

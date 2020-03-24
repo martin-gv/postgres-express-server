@@ -1,4 +1,4 @@
-const getValues = require('../../where/getValues');
+const getValues = require('../../../../../createModel/formatter/sql/where/getValues');
 
 describe('getValues function for WHERE sql formatter', () => {
   test('returns an array of query object values', () => {

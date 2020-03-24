@@ -1,4 +1,4 @@
-const params = require('../params');
+const params = require('../../../createModel/formatter/params');
 
 describe('renumbers sql $1 placeholders into a valid sequence', () => {
   test('should throw if a string is not passed in', () => {

@@ -1,4 +1,4 @@
-const insert = require('../insert');
+const insert = require('../../../../createModel/formatter/sql/insert');
 
 describe('generates INSERT sql statement', () => {
   //   output is an array

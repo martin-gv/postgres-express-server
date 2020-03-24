@@ -1,5 +1,5 @@
-const limit = require('../limit');
-const defaultConfig = require('../../../defaultConfig');
+const limit = require('../../../../createModel/formatter/sql/limit');
+const defaultConfig = require('../../../../createModel/defaultConfig');
 
 const config = { ...defaultConfig, collection: 'books' };
 const limitSQL = limit(config);

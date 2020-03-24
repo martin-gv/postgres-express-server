@@ -1,4 +1,4 @@
-const join = require('../join');
+const join = require('../../../../createModel/formatter/sql/join');
 
 const config = { collection: 'books' };
 const joinSQL = join(config);

@@ -1,5 +1,5 @@
-const offset = require('../offset');
-const defaultConfig = require('../../../defaultConfig');
+const offset = require('../../../../createModel/formatter/sql/offset');
+const defaultConfig = require('../../../../createModel/defaultConfig');
 
 const config = { ...defaultConfig, collection: 'books' };
 const offsetSQL = offset(config);

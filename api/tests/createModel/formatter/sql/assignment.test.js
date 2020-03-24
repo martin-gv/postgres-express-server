@@ -1,4 +1,4 @@
-const assignment = require('../assignment');
+const assignment = require('../../../../createModel/formatter/sql/assignment');
 
 describe('format sql statement for SET assignments', () => {
   test('should throw on an empty object', () => {
