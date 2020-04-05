@@ -1,4 +1,6 @@
-const { setupDatabase, resetDatabase, Model } = require('../db/dbTest');
+const { setupDatabase, resetDatabase } = require('../../setup/testDatabase');
+
+const Model = require('../../setup/testModel');
 
 beforeEach(() => setupDatabase());
 afterEach(() => resetDatabase());

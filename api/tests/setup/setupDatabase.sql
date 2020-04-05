@@ -1,7 +1,5 @@
 -- Sample data from Faker.js
 
-drop table if exists employee, client_account;
-
 create table employee (
     id serial primary key,
     first_name text,
@@ -44,3 +42,4 @@ values  (2, 'Larkin - Bode'),
         (5, 'Goodwin Inc'),
         (10, 'Hane - Bernier'),
         (10, 'Sanford, Weber and McKenzie');
+        
