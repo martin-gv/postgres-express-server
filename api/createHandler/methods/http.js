@@ -5,7 +5,7 @@ const get = ({ model }) => async (req, res) => {
 
   const results = req.params.id
     ? await model.findById(req.params.id)
-    : await model.find({ $offset: 3 });
+    : await model.find({});
 
   return res.status(200).json(results);
 };
