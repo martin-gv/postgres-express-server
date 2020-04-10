@@ -83,3 +83,9 @@ Starts the app. Environment variables may need to be added depending on the serv
 Starts the app in development mode. Requires `nodemon` to be installed. Environment variables are loaded from the `.env` file.
 
 The app runs with the `--inspect` for attaching a debugger. In VS Code, a launch configuration can run this script and attach the debugger automatically.
+
+---
+
+    npm run lint-staged
+
+Runs linting on currently staged files. Uses ESLint and Prettier.
