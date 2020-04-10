@@ -63,3 +63,23 @@ POST     create    create    post
 PUT      update    update    put
 DELETE   delete    delete    delete
 ```
+
+## Scripts
+
+    npm run test
+
+Runs Jest in serial mode. Requires the environment variables prefixed with `TEST_` in `.env.example`.
+
+---
+
+    npm run start
+
+Starts the app. Environment variables may need to be added depending on the server configuration.
+
+---
+
+    npm run dev
+
+Starts the app in development mode. Requires `nodemon` to be installed. Environment variables are loaded from the `.env` file.
+
+The app runs with the `--inspect` for attaching a debugger. In VS Code, a launch configuration can run this script and attach the debugger automatically.
